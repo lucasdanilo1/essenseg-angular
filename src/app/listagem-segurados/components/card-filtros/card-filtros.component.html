@@ -1,0 +1,104 @@
+<main class="card shadow bg-body-tertiary rounded" style="background-color: #c9eef1!important;">
+
+  <h3 class="card-header text-center" style="background-color: #c9eef1!important;">Filtros</h3>
+
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-md-4">
+        <p>Vigência</p>
+      </div>
+      <div class="col-md-4">
+        <p>Data de Nascimento</p>
+      </div>
+    </div>
+
+    <form [formGroup]="filtrosParam" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+
+        <div class="col-md-2">
+          <input type="date" class="form-control" id="dataVigencia1" name="dataVigencia1"
+            formControlName="dataVigencia1">
+        </div>
+        <div class="col-md-2">
+          <input type="date" class="form-control" id="dataVigencia2" name="dataVigencia2"
+            formControlName="dataVigencia2">
+        </div>
+        <div class="col-md-2">
+          <input type="date" class="form-control" id="dataNascimento1" name="dataNascimento1"
+            formControlName="dataNascimento1">
+        </div>
+        <div class="col-md-2">
+          <input type="date" class="form-control" id="dataNascimento2" name="dataNascimento2"
+            formControlName="dataNascimento2">
+        </div>
+
+        <div class="dropdown col-md-4">
+
+          <div class="d-flex align-items-center justify-content-center">
+            <select class="form-select" formControlName="corretorId">
+              <option [ngValue]="null" selected>- Contratante -</option>
+              <option *ngFor="let item of corretores" [value]="item.id">{{item.nome}}</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="row mt-4 mb-5">
+
+        <div class="col-sm-4">
+
+          <div class="d-flex align-items-center justify-content-center">
+            <select class="form-select" formControlName="segmentacao">
+              <option [ngValue]="null" selected>- Segmentação -</option>
+              <option value="INDIVIDUAL">Individual</option>
+              <option value="ADESAO">Adesão</option>
+              <option value="EMPRESARIAL">Empresarial</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col-sm-4">
+          <div class="d-flex align-items-center justify-content-center">
+            <select class="form-select " formControlName="operadoraId">
+              <option [ngValue]="null" selected>- Operadora -</option>
+              <option *ngFor="let item of operadoras" [value]="item.id">{{item.nome}}</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="col-sm-4">
+
+          <div class="d-flex align-items-center justify-content-center">
+            <select class="form-select" formControlName="administradoraId">
+              <option [ngValue]="null" selected>- Administradora -</option>
+              <option *ngFor="let item of administradoras" [value]="item.id">{{item.nome}}</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row mb-3">
+
+        <div class="col-md-8 d-flex justify-content-lg-start justify-content-center">
+          <input name="filtroGlobal" class="form-control" placeholder="Filtro Global" formControlName="filtroGlobal">
+        </div>
+
+        <div class="col-md-4 d-flex justify-content-lg-end justify-content-center">
+          <button class="btn btn-success" type="submit">Buscar</button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</main>

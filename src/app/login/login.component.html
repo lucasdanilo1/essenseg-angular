@@ -1,0 +1,38 @@
+<div class="componente-fundo">
+    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-3">
+            <div class="row">
+                <div class="card border-3 shadow">
+                    <div class="card-body mt-5 mb-5 mx-auto" style="max-width: 400px;">
+                        <div class="text-center mb-5">
+                            <img src="assets\images\essenseg-login.png" style="width: 90%;">
+                        </div>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <div class="row mb-4">
+                                <input type="text" name="usuario" id="usuario" formControlName="login"
+                                    class="form-control" placeholder="Nome de Usuário"
+                                    [ngClass]="{'is-invalid': submitted && loginForm.get('login')?.errors}">
+                                <div class="invalid-feedback">
+                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                        [showError]="submitted && loginForm.get('login')!.hasError('required')" />
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <input type="password" name="senha" id="senha" formControlName="senha"
+                                    class="form-control" placeholder="Senha"
+                                    [ngClass]="{'is-invalid': submitted && loginForm.get('senha')?.errors}">
+                                <div class="invalid-feedback">
+                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                        [showError]="submitted && loginForm.get('senha')!.hasError('required')" />
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button [disabled]="loginForm.invalid" type="submit" class="btn btn-success mt-4" style="text-align: center;">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

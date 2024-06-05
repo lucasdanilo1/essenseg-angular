@@ -1,0 +1,35 @@
+html {
+	background-image: url('https://jingdaily.com/wp-content/uploads/2023/07/newjeans_21-1240x698.jpg');
+	background-size: cover;
+	padding: 0px;
+	margin: 0;
+	line-height: 1.8;
+	font-family: 'Poppins', sans-serif;
+  }
+
+.card{
+	font-size: small !important;
+	--bs-card-border-color: rgb(122, 197, 204)!important;
+	--bs-card-border-radius: 20px!important;
+	--bs-card-bg: rgba(255, 255, 255, 0.9)!important;
+}
+
+
+.form-select, .form-control, .form-control:focus{
+	font-size: small !important;
+	box-shadow: none;
+	border-width: 2px;
+	border-color: rgb(122, 197, 204);
+}
+
+
+.btn-success, .btn-success:visited {
+	width: 30%;
+	border: none;
+    background-color: #4e9ea5!important;
+}
+
+.btn-success:hover, .btn-success:active{
+	border: none;
+	background-color: #408288!important;
+}

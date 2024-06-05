@@ -1,0 +1,100 @@
+
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:visited, .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited  {
+	border: none;
+    background-color: #4e9ea5!important;
+}
+
+.view {
+	color: #4e9ea5;
+}
+
+.table-wrapper {
+	background-color: #fff;
+	margin: 40px 0px 40px 0px;
+	width: 100%;
+	overflow: auto;
+	border: 1px solid #d8d8da;
+}
+
+.card-body {
+	font-size: small !important;
+}
+
+#pesquisar{
+	border-radius:2px;
+	width: 500px!important;
+}
+
+.table-title {
+	background: #4e9ea5;
+	color: #fff;
+	top: 0;
+	width: 100%;
+	left: 0;
+	padding: 10px 30px;
+}
+
+.table-title h2 {
+	margin: 5px 0 0;
+	font-size: 17px;
+}
+
+table.table tr th,
+table.table tr td {
+	border-color: #e9e9e9;
+	font-size: small;
+	font-weight: 400;
+}
+
+.pagination {
+	float: right;
+	margin: 0 0 5px;
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	padding: 0;
+}
+
+.pagination a {
+	text-decoration: none;
+	padding: 3px 10px;
+	margin: 0 2px;
+	border: 1px solid #ccc;
+	color: #000000;
+	border-radius: 3px;
+	font-size: 10px;
+}
+
+.pagination a.ativo {
+	background-color: #cccccc;
+	color: #fff;
+	border: 1px solid #cccccc;
+}
+
+th{
+	text-align: center;
+	font-weight: 500!important;
+}
+
+td{
+	text-align: center;
+	font-size: small !important;
+  }
+  
+a {
+	  color: #566787;
+	  display: inline-block;
+	  text-decoration: none;
+	  outline: none !important;
+}
+  
+i {
+	  font-size: 19px;
+}
+  
+.inativo td {
+	color: #b1afaf;
+  }
+  
+
+

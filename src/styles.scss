@@ -1,1 +1,95 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.css';
+
+@import 'material-icons/iconfont/material-icons.css';
+
+@import 'ngx-toastr/toastr';
+
+body {
+	line-height: 1.8;
+	font-family: 'Poppins', sans-serif;
+	color: #000000;
+	font-weight: 400;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	position: relative;
+	font-size: 24px;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+}
+
+.btn-success, .btn-success:active {
+	background-color: rgb(122, 197, 204)!important;
+	border-color: rgb(122, 197, 204)!important;
+}
+
+.btn-success:hover {
+	background-color: rgb(48, 160, 170)!important;
+	border-color: rgb(48, 160, 170)!important;
+}
+
+.btn-primary, .btn-primary:hover{
+	background-color: rgb(54, 179, 190)!important;
+	border-color: rgb(54, 179, 190)!important;
+}
+
+.btn-primary:active{
+	background-color: rgb(6, 169, 184)!important;
+	border-color: rgb(6, 169, 184)!important;
+}
+
+.form-select, .form-control{
+	font-size: small !important;
+	box-shadow: none;
+	border-width: 1px;
+	border-color: rgb(122, 197, 204);
+}
+
+
+.form-control:focus, .form-select:focus {
+	box-shadow: none;
+	border-color: #439ba3!important;
+}
+
+.accordion-button:after {
+//	order: -1;
+//    margin-left: 0; 
+//    margin-right:0.5em;
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+  }
+
+  .accordion{
+	--bs-accordion-bg: #F8F9FA!important;
+	--bs-accordion-btn-bg: #439ba3!important;
+	--bs-accordion-active-bg: #439ba3!important;
+	--bs-accordion-active-color: white:!important;
+	--bs-accordion-btn-focus-box-shadow: none;
+  }
+
+#accordionSemIcone .accordion-button::after {
+	background-image: initial!important;
+}
+
+#meuAccordion .accordion-button:not(.collapsed)::after {
+	background-image: initial!important;
+}
+
+.dropdown-button:active {
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.65) !important;
+	}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

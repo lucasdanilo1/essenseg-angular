@@ -1,0 +1,31 @@
+.componente-fundo {
+	background-image: url('/assets/images/login-bg.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	line-height: 1.8;
+	font-family: 'Poppins', sans-serif;
+}
+
+.form-control {
+	border-width: 2px !important;
+}
+
+.card {
+	font-size: small !important;
+	--bs-card-border-color: rgb(122, 197, 204) !important;
+	--bs-card-border-radius: 20px !important;
+	--bs-card-bg: rgba(255, 255, 255, 0.9) !important;
+}
+
+.btn-success,
+.btn-success:visited {
+	width: 30%;
+	border: none;
+	background-color: #4e9ea5 !important;
+}
+
+.btn-success:hover,
+.btn-success:active {
+	border: none;
+	background-color: #408288 !important;
+}

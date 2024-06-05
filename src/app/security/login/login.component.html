@@ -1,0 +1,16 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-md-3">
+      <div class="row">
+        <div class="card border-3 shadow">
+          <div class="card-body mt-5 mb-5" style="text-align: center">
+            <img src="assets/images/essenseg-logo.png" style="width: 90%;" class="mb-5">
+            <form (submit)="onLogin()">
+              <input type="text" name="login" [(ngModel)]="loginObj.login" class="form-control my-4 py-2" placeholder="Nome de Usuário">
+              <input type="password" name="senha" [(ngModel)]="loginObj.senha" class="form-control my-4 py-2" placeholder="Senha">
+              <button type="submit" class="btn btn-success mt-4 text-align: center;">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

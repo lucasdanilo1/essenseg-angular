@@ -1,0 +1,99 @@
+<main class="container-fluid col-md-11 mt-5 mb-5">
+
+  <div class="row">
+
+    <div class="col-md-7 d-flex align-items-center">
+      <h4 class="text-start" style="font-size: 30px;">Total: {{seguradosTotais}}</h4>
+    </div>
+
+    <div class="col-md-5">
+      <app-card-filtros (filtroSubmetido)="getSeguradosFiltrados($event)"></app-card-filtros>
+    </div>
+
+  </div>
+
+  <div class="table-wrapper shadow bg-body-tertiary rounded">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6 d-flex justify-content-lg-start">
+          <h2>Lista de Segurados</h2>
+        </div>
+        <div class="col-sm-6 d-flex justify-content-lg-end">
+          <a href="http://localhost:4200/cadastro/cliente"
+            style="display: inline-block; padding-top: 5px; color: white;">
+            <i class="material-icons" style="font-size: 25px;">person_add</i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-active">
+          <th>Segmentação</th>
+          <th>Envio</th>
+          <th>Nome</th>
+          <th>Detalhar</th>
+          <th>Status</th>
+          <th>E-mail</th>
+          <th>Telefone</th>
+          <th>CPF</th>
+          <th>Inativar/Ativar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let segurado of segurados" [ngClass]="{ 'inativo': !segurado.ativo }">
+          <td>
+            <span *ngIf="segurado.segmentacao.includes('INDIVIDUAL')">Individual</span>
+            <span *ngIf="segurado.segmentacao.includes('ADESAO')">Adesão</span>
+            <span *ngIf="segurado.segmentacao.includes('EMPRESARIAL')">Empresarial</span>
+          </td>
+          <td>{{ segurado.dataCadastro | date:'dd/MM/yyyy' }}</td>
+          <td>{{ segurado.nome || '' }}</td>
+          <td style="cursor: pointer" (click)="detalhamentoSegurado(segurado.id, segurado.tipo)">
+            <a data-toggle="modal" class="view">
+              <i class="material-icons" data-toggle="tooltip" title="Detalhar">visibility</i>
+            </a>
+          </td>
+          <td>{{ segurado.ativo ? 'Ativo' : 'Inativado' }}</td>
+          <td>{{ segurado.email || '-' }}</td>
+          <td>{{ segurado.telefone | mask: '(00) 00000-0000' }}</td>
+          <td>
+            {{ segurado.cpfCnpj | mask:'000.000.000-00' ||'-' }}
+          </td>
+          <td style="cursor: pointer" (click)="inativarAtivarSegurado(segurado.id, segurado.nome)">
+            <a class="delete" data-toggle="modal">
+              <i class="material-icons" data-toggle="tooltip" title="Delete">power_settings_new</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <div class="clearfix">
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="pagination" *ngFor="let page of [].constructor(3); let i = index">
+            <a class="page ativo">
+              {{i + 1}}
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+</main>

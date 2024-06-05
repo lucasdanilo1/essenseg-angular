@@ -1,0 +1,119 @@
+body,
+html {
+	line-height: 1.8;
+	font-family: 'Poppins', sans-serif;
+	color: #555e58;
+	font-weight: 400;
+	margin: 0px;
+	padding: 0px;
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	position: relative;
+	font-size: 24px;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+}
+
+.accordion-button:after {
+    order: -1;
+    margin-left: 0; 
+    margin-right:0.5em;
+}
+
+
+.accordion-button:after {
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+  }
+
+  .accordion{
+	--bs-accordion-bg: #F8F9FA!important;
+	--bs-accordion-btn-bg: #439ba3!important;
+	--bs-accordion-active-bg: #439ba3!important;
+	--bs-accordion-active-color: white:!important;
+	--bs-accordion-btn-focus-box-shadow: none;
+  }
+
+.remover-borda{
+	box-shadow: none!important;
+	border-width: none!important;
+	border: none
+}
+
+.form-select{
+	box-shadow: none;
+	border-width: 1px;
+	border-color: rgb(122, 197, 204);
+}
+
+.form-control{
+	box-shadow: none;
+	border-width: 1px;
+	border-color: rgb(122, 197, 204);
+}
+
+.form-control:focus {
+	box-shadow: none;
+	border-color: #439ba3!important;
+}
+
+.form-select:focus {
+	box-shadow: none;
+	border-color: #439ba3!important;
+}
+
+
+.card-header{
+    background-color: #4E9EA5;
+    color: white;
+}
+
+.card-footer{
+    background-color: #4E9EA5;
+    color: white;
+}
+
+.card{
+	font-size: small !important;
+    background-color: #F8F9FA!important;
+}
+
+li{
+    background-color: #F8F9FA!important;
+}
+
+#pesquisar{
+	border-radius:2px;
+	width: 500px!important;
+}
+
+.form-control{
+	font-size: small !important;
+}
+
+.form-select {
+	font-size: small !important;
+}
+
+.btn-buscar {
+	background-color: #4E9EA5 !important;
+	border-color: #4E9EA5 !important;
+	color: white;
+}
+
+.btn-danger{
+	color: white;
+}
+
+.btn-success {
+	background-color: rgb(122, 197, 204);
+	border-color: rgb(122, 197, 204);
+}

@@ -1,0 +1,77 @@
+<div class="card shadow bg-body-tertiary rounded">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Relação Operadora-Administradora: </h3>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <button type="button" data-bs-target="#relacionamentoModal" data-bs-toggle="modal"
+                        class="btn btn-success btn-sm d-flex align-items-center justify-content-center">
+                        <i class="material-icons" style="font-size: 16px;">add</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overflow-auto" style="max-height: 400px;">
+        <div class="card-body table-responsive">
+            <table class="table" style="background-color: #F8F9FA!important;">
+                <thead>
+                    <tr>
+                        <th scope="col">Operadora</th>
+                        <th scope="col">Administradora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of relacoes">
+                        <td>{{item.operadora}}</td>
+                        <td>{{item.administradora}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<form [formGroup]="relacaoForm" (ngSubmit)="onSubmit()">
+
+    <div class="modal fade" id="relacionamentoModal" aria-hidden="true" aria-labelledby="relacionamentoModalLabel"
+        tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="relacionamentoModalLabel">Novo Relacionamento</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <select class="form-select" (change)="getAdministradorasNotRelatedToOperadora()" formControlName="operadoraId">
+                                    <option [ngValue]="null" selected>Operadora</option>
+                                    <option *ngFor="let item of operadoras" [value]="item.id">{{item.nome}}</option>
+                                </select>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <select class="form-select" formControlName="administradoraId">
+                                    <option [ngValue]="null" selected>Administradora</option>
+                                    <option *ngFor="let item of administradoras" [value]="item.id">{{item.nome}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button class="btn btn-secondary" data-bs-toggle="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

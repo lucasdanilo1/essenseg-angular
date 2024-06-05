@@ -1,0 +1,45 @@
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	position: relative;
+	font-size: 24px;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+}
+
+.card-header{
+    background-color: #4E9EA5;
+    color: white;
+}
+
+.card-footer{
+    background-color: #4E9EA5;
+    color: white;
+}
+
+.card{
+	font-size: small !important;
+    background-color: #F8F9FA!important;
+}
+
+li{
+    background-color: #F8F9FA!important;
+}
+
+#pesquisar{
+	border-radius:2px;
+	width: 500px!important;
+}
+
+
+.btn-buscar {
+	background-color: #4E9EA5 !important;
+	border-color: #4E9EA5 !important;
+	color: white;
+}

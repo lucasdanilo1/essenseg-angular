@@ -1,0 +1,51 @@
+
+.btn-secondary{
+	border: rgb(180, 180, 180);
+	background-color: rgb(180, 180, 180);
+}
+
+.form-control{
+	box-shadow: none;
+	border-width: 1px;
+	border-color: rgb(122, 197, 204);
+}
+
+.form-control:focus {
+	box-shadow: none;
+	border-color: #439ba3!important;
+}
+
+.form-select{
+	box-shadow: none;
+	border-width: 1px;
+	border-color: rgb(122, 197, 204);
+}
+
+.form-select:focus {
+	box-shadow: none;
+	border-color: #439ba3!important;
+}
+
+.table{
+	--bs-table-bg: #F8F9FA!important;
+}
+
+
+.card-header{
+    background-color: #4E9EA5;
+    color: white;
+}
+
+.card-footer{
+    background-color: #4E9EA5;
+    color: white;
+}
+
+.card{
+	font-size: small !important;
+    background-color: #F8F9FA!important;
+}
+
+li{
+    background-color: #F8F9FA!important;
+}

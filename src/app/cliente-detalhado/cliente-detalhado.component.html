@@ -1,0 +1,445 @@
+<div class="container-fluid col-md-8 mt-5 mb-5">
+
+    <app-botao-voltar [url]="'/segurados'"/>
+
+    <div class="row mb-4 mt-4">
+        <div class="col-md-6">
+            <h1>{{cliente?.dadosSeguradoDetalhadoDTO?.nome}}</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex justify-content-end">
+                <button (click)="defineEditMode()" class="btn btn-success" style="display: flex; align-items: center;">
+                    <i class="material-icons" style="margin-right: 5px;">edit</i><span
+                        style="margin-right: 5px;">Editar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-lg bg-body-tertiary rounded">
+
+
+        <form [formGroup]="novosDados" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+            <div class="accordion accordion-flush">
+
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" aria-expanded="true" type="button"
+                        data-bs-toggle="collapse" aria-controls="accordion-collapse0"
+                        data-bs-target="#accordion-collapse0">
+                        <div style="color: white;">Dados Pessoais</div>
+                    </button>
+                    <div id="accordion-collapse0" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <div class="row mt-5">
+
+                                <div class="container-fluid col-md-5" formGroupName="atualizaDadosSeguradoDTO">
+
+                                    <div class="input-group mb-4">
+                                        <div class="col-md-12">
+                                            <label>Nome Completo</label>
+                                            <input type="text" class="form-control mt-1" name="nome"
+                                                formControlName="nome"
+                                                [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['nome'].errors}"
+                                                [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                            <div class="invalid-feedback">
+                                                <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                    [showError]="submitted && atualizaDadosSeguradoDTOField['nome'].hasError('required')" />
+                                                <app-form-error-feedback
+                                                    [errorMessage]="'O campo deve ter no mínimo 6 caracteres.'"
+                                                    [showError]="submitted && atualizaDadosSeguradoDTOField['nome'].hasError('minlength')" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label>Data de Nascimento</label>
+                                            <input type="date" class="form-control mt-1" name="dataNascimento"
+                                                value="{{cliente?.dadosSeguradoDetalhadoDTO?.dataNascimento}}"
+                                                [ngClass]="{'campo-inalteravel': true}">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row  mb-4">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <div class="col-md-12">
+                                                    <label>CPF</label>
+                                                    <input type="text" class="form-control mt-1 " name="cpf"
+                                                        value="{{cliente?.dadosEspecificosClienteDetalhadoDTO?.cpf}}"
+                                                        [ngClass]="{'campo-inalteravel': true}">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="input-group mb-4">
+                                        <div class="col-md-12">
+                                            <label>Nome do Responsável</label>
+                                            <input type="text" class="form-control mt-1" name="nomeResponsavel"
+                                                [ngClass]="{'campo-inalteravel': true}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-5">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <div class="col-md-12">
+                                                    <label>CPF do Responsável</label>
+                                                    <input type="text" class="form-control mt-1" name="cpfResponsavel"
+                                                        mask="000.000.000-00" [ngClass]="{'campo-inalteravel': true}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container-fluid col-md-5" formGroupName="atualizaDadosSeguradoDTO">
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Telefone"
+                                                    name="telefone" formControlName="telefone" mask="(00) 00000-0000"
+                                                    [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['telefone'].errors}"
+                                                    [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['telefone'].hasError('required')" />
+                                                    <app-form-error-feedback [errorMessage]="'Telefone inválido'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['telefone'].hasError('pattern')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="E-mail"
+                                                    name="email" formControlName="email"
+                                                    [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['email'].errors}"
+                                                    [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['email'].hasError('required')" />
+                                                    <app-form-error-feedback [errorMessage]="'E-mail inválido'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['email'].hasError('email')" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-4">
+                                                <div class="col-md-12">
+                                                    <label>CEP</label>
+                                                    <input type="text" class="form-control mt-1" name="cep"
+                                                        formControlName="cep" mask="00.000-000"
+                                                        [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['cep'].errors}"
+                                                        [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['cep'].hasError('required')" />
+                                                    <app-form-error-feedback [errorMessage]="'Formato inválido'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['cep'].hasError('pattern')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <div class="col-md-12">
+                                                    <label>Endereço</label>
+                                                    <textarea class="form-control mt-1" name="endereco"
+                                                        formControlName="endereco"
+                                                        [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['endereco'].errors}"
+                                                        [ngClass]="{'campo-inalteravel': !ehEditMode}"></textarea>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['endereco'].hasError('required')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" aria-expanded="true" type="button"
+                        data-bs-toggle="collapse" aria-controls="accordion-collapse"
+                        data-bs-target="#accordion-collapse">
+                        <div style="color: white;">Dados de Contratação</div>
+                    </button>
+                    <div id="accordion-collapse" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <div class="card-body mt-4">
+
+                                <div class="row mb-4">
+                                    <div class="container-fluid col-md-5">
+
+                                        <div class="row mb-4" formGroupName="atualizaDadosSeguradoDTO">
+                                            <div class="col-md-6">
+                                                <div class="col-md-12">
+                                                    <label>Operadora</label>
+                                                    <select class="form-select mt-1" name="operadoraId"
+                                                        formControlName="operadoraId" (change)="getPlanosByOperadora()"
+                                                        (change)="getAdministradorasByOperadora()"
+                                                        [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['operadoraId'].errors}"
+                                                        [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                        <option *ngFor="let operadora of operadoras"
+                                                            [value]="operadora.id">
+                                                            {{ operadora.nome }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['operadoraId'].hasError('required')" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="col-md-12">
+                                                    <label>Administradora</label>
+                                                    <select class="form-select mt-1" name="administradoraId"
+                                                        formControlName="administradoraId"
+                                                        [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                        <option *ngFor="let administradora of administradoras"
+                                                            [value]="administradora.id">
+                                                            {{ administradora.nome }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['administradoraId'].hasError('required')" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4" formGroupName="atualizaDadosSeguradoDTO">
+                                            <div class="col-md-6">
+                                                <div class="col-md-12">
+                                                    <label>Segmentação</label>
+                                                    <select class="form-select mt-1" name="segmentacao"
+                                                        formControlName="segmentacao"
+                                                        [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['segmentacao'].errors}"
+                                                        [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                        <option value="INDIVIDUAL">Individual</option>
+                                                        <option value="ADESAO">Adesão</option>
+                                                    </select>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && atualizaDadosSeguradoDTOField['segmentacao'].hasError('required')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4" formGroupName="atualizaDadosSeguradoDTO">
+                                            <div class="col-md-6">
+                                                <div class="input-group mt-1">
+                                                    <div class="col-md-12">
+                                                        <label>Contratante</label>
+                                                        <select class="form-select mt-1" name="corretorId"
+                                                            [ngClass]="{'campo-inalteravel': true}">
+                                                            <option *ngFor="let corretor of corretores"
+                                                                [value]="corretor.id">
+                                                                {{ corretor.nome }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row mb-4" formGroupName="atualizaDadosSeguradoDTO">
+                                            <div class="col-md-6">
+                                                <label>Data de Vigência</label>
+                                                <div class="input-group mt-1">
+                                                    <input type="date" class="form-control" name="vigencia"
+                                                        formControlName="vigencia"
+                                                        [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['vigencia'].errors}"
+                                                        [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && atualizaDadosSeguradoDTOField['vigencia'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="container-fluid col-md-5">
+
+                                        <div class="row mb-4">
+                                            <div class="input-group">
+                                                <div class="col-md-12">
+                                                    <label>Observações</label>
+                                                    <textarea formControlName="observacoes" rows="5"
+                                                        [ngClass]="{'campo-inalteravel': !ehEditMode}"
+                                                        class="form-control mt-1"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4" formGroupName="atualizaDadosSeguradoDTO">
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <div class="col-md-12">
+                                                        <label>Plano Escolhido</label>
+                                                        <select class="form-select mt-1" name="planoId"
+                                                            formControlName="planoId"
+                                                            [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['planoId'].errors}"
+                                                            [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                            <option *ngFor="let plano of planos" [value]="plano.id">
+                                                                {{ plano.nome }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && atualizaDadosSeguradoDTOField['planoId'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="input-group">
+                                                    <div class="col-md-12">
+                                                        <label>% da Comissão</label>
+                                                        <input type="text" class="form-control mt-1"
+                                                            name="percentualComissao"
+                                                            formControlName="percentualComissao"
+                                                            [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['percentualComissao'].errors}"
+                                                            [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                        <div class="invalid-feedback">
+                                                        </div>
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && atualizaDadosSeguradoDTOField['percentualComissao'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4" formGroupName="atualizaDadosSeguradoDTO">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="col-md-12">
+                                                        <label>Valor do Plano Bruto</label>
+                                                        <input type="text" class="form-control mt-1"
+                                                            name="valorDoPlanoBruto" formControlName="valorDoPlanoBruto"
+                                                            [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['valorDoPlanoBruto'].errors}"
+                                                            [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                    </div>
+
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && atualizaDadosSeguradoDTOField['valorDoPlanoBruto'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="col-md-12">
+                                                        <label>Valor de Adesão</label>
+                                                        <input type="text" class="form-control mt-1" name="adesao"
+                                                            formControlName="adesao"
+                                                            [ngClass]="{'is-invalid': submitted && atualizaDadosSeguradoDTOField['adesao'].errors}"
+                                                            [ngClass]="{'campo-inalteravel': !ehEditMode}">
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && atualizaDadosSeguradoDTOField['adesao'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="accordion-item" id="accordionSemIcone">
+                    <button class="accordion-button" type="button">
+                        <div style="color: white;">Anexos</div>
+                    </button>
+                    <div id="accordion-collapse2" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <ul class="list-group">
+                                        <li class="list-group-item" *ngFor="let item of anexos">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span>{{ item.nomeArquivo }}</span>
+                                                <div class="btn-group">
+                                                    <a (click)="downloadAnexo(item.id, item.nomeArquivo)"
+                                                        title="Baixar">
+                                                        <i class="material-icons download-icon">download</i>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <label for="attachment" class="btn btn-primary" [ngClass]="{'disabled': !ehEditMode}">
+                                    <i class="material-icons align-middle">attachment</i> <span
+                                        class="align-middle">Anexar</span>
+                                </label>
+
+
+                                <input id="attachment" type="file" style="display: none;" name="attachment" multiple
+                                    accept=".pdf, image/*" (change)="onAnexosSelecionados($event)">
+                            </div>
+                        </div>
+                        <div class="row mb-3 mt-3">
+                            <div class="d-flex justify-content-center" *ngFor="let anexo of anexosSelecionados">
+                                <span>{{ anexo.name }}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-end">
+                <button type="submit" class="btn btn-success" style="display: flex; align-items: center;">
+                    <i class="material-icons" style="margin-right: 5px;">check</i><span
+                        style="margin-right: 5px;">Salvar</span>
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

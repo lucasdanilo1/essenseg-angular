@@ -1,0 +1,125 @@
+
+<div class="container-fluid col-md-6 mt-5 mb-5">
+
+    <div class="row mb-5">
+        <div>
+            <h1 class="text-center mt-3" style="color: #4E9EA5; font-weight: bold;">
+                {{operadora?.nome}}
+            </h1>
+        </div>
+        <app-botao-voltar [url]="'/controle'"/>
+    </div>
+
+    <div class="card shadow-lg bg-body-tertiary rounded">
+        <div class="card-header" style="background-color: #4E9EA5;">
+            <div class="text-center mt-2" style="color: white;">
+                <h2>Informações da Operadora</h2>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3 style="font-weight: bold;">Planos Disponíveis</h3>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let item of planos">
+                                <td>{{item.nome}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h3 style="font-weight: bold;">Administradoras Vinculadas</h3>
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let item of administradoras">
+                                <td>{{item.nome}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer" style="background-color: #4E9EA5;">
+            <div class="row">
+                <div class="col d-flex justify-content-start">
+                    <button type="button" data-bs-target="#novoPlanoModal" data-bs-toggle="modal"
+                        class="btn btn-success btn-sm d-flex align-items-center justify-content-center">
+                        <span>Novo Plano de Saúde</span>
+                    </button>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <button type="button" data-bs-target="#vincularOperadoraModal" data-bs-toggle="modal"
+                        class="btn btn-success btn-sm d-flex align-items-center justify-content-center">
+                        <span>Novo vínculo</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<form [formGroup]="formAdministradora" (ngSubmit)="onSubmitAdministradoraModal()">
+
+    <div class="modal fade" id="vincularOperadoraModal" aria-hidden="true" aria-labelledby="relacionamentoModalLabel"
+        tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="relacionamentoModalLabel">Vincular nova administradora a {{operadora?.nome}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <select class="form-select" formControlName="administradoraId">
+                                    <option [ngValue]="null" selected>- Selecione -</option>
+                                    <option *ngFor="let item of administradorasNaoVinculadas" [value]="item.id">{{item.nome}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button class="btn btn-secondary" data-bs-toggle="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form [formGroup]="formPlano" (ngSubmit)="onSubmitPlanoModal()">
+    <div class="modal fade" id="novoPlanoModal" aria-hidden="true" aria-labelledby="novoPlanoModalLabel" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="novoPlanoModalLabel">Atribuir novo plano a {{operadora?.nome}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <label>Nome: </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="nome" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button class="btn btn-secondary" data-bs-toggle="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </form>
+

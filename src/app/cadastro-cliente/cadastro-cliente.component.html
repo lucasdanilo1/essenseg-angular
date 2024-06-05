@@ -1,0 +1,380 @@
+<div class="container-fluid col-md-8 mt-5 mb-5">
+
+    <div class="row mb-4 mt-4">
+        <div class="col-md-8">
+            <h1>Cadastro de Segurado (Individual/Adesão)</h1>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success" style="display: flex; align-items: center;">
+                    <span>Cadastro de Segurado (Empresarial)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card shadow-lg bg-body-tertiary rounded">
+
+        <form [formGroup]="dadosCadastro" (ngSubmit)="onSubmit()">
+
+            <div class="accordion accordion-flush">
+
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" aria-expanded="true" type="button"
+                        data-bs-toggle="collapse" aria-controls="accordion-collapse0"
+                        data-bs-target="#accordion-collapse0">
+                        <div style="color: white;">Dados Pessoais</div>
+                    </button>
+                    <div id="accordion-collapse0" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <div class="row mt-5">
+                                <div class="container-fluid col-md-5">
+
+                                    <div formGroupName="dadosPessoais">
+                                        <div class="input-group mb-4">
+                                            <input type="text" class="form-control" placeholder="Nome" name="nome"
+                                                formControlName="nome"
+                                                [ngClass]="{'is-invalid': submitted && dadosPessoaisField['nome'].errors}">
+                                            <div class="invalid-feedback">
+                                                <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                    [showError]="submitted && dadosPessoaisField['nome'].hasError('required')" />
+                                                <app-form-error-feedback
+                                                    [errorMessage]="'O campo deve ter no mínimo 6 caracteres.'"
+                                                    [showError]="submitted && dadosPessoaisField['nome'].hasError('minlength')" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label>Data de Nascimento</label>
+                                                <input type="date" class="form-control mt-2" name="dataNascimento"
+                                                    formControlName="dataNascimento"
+                                                    [ngClass]="{'is-invalid': submitted && dadosPessoaisField['dataNascimento'].errors}">
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && dadosPessoaisField['dataNascimento'].hasError('required')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div formGroupName="dadosEspecificos">
+
+                                        <div class="row  mb-4">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="CPF" name="cpf"
+                                                        formControlName="cpf" mask="000.000.000-00"
+                                                        [ngClass]="{'is-invalid': submitted && dadosEspecificosField['cpf'].errors}">
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && dadosEspecificosField['cpf'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div formGroupName="dadosPessoais">
+
+                                        <div class="input-group mb-4">
+                                            <input type="text" class="form-control" placeholder="Nome do Responsável"
+                                                name="nomeResponsavel" formControlName="nomeResponsavel">
+                                        </div>
+
+                                        <div class="row mb-5">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="CPF do Responsável" name="cpfResponsavel"
+                                                        formControlName="cpfResponsavel" mask="000.000.000-00">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container-fluid col-md-5" formGroupName="dadosPessoais">
+
+                                    <div class="row mb-4">
+
+
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Telefone"
+                                                    name="telefone" formControlName="telefone" mask="(00) 00000-0000"
+                                                    [ngClass]="{'is-invalid': submitted && dadosPessoaisField['telefone'].errors}">
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && dadosPessoaisField['telefone'].hasError('required')" />
+                                                    <app-form-error-feedback [errorMessage]="'Telefone inválido'"
+                                                        [showError]="submitted && dadosPessoaisField['telefone'].hasError('pattern')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="E-mail"
+                                                    name="email" formControlName="email"
+                                                    [ngClass]="{'is-invalid': submitted && dadosPessoaisField['email'].errors}">
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && dadosPessoaisField['email'].hasError('required')" />
+                                                    <app-form-error-feedback [errorMessage]="'E-mail inválido'"
+                                                        [showError]="submitted && dadosPessoaisField['email'].hasError('email')" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-4">
+                                                <input type="text" class="form-control" placeholder="CEP" name="cep"
+                                                    formControlName="cep" mask="00.000-000"
+                                                    [ngClass]="{'is-invalid': submitted && dadosPessoaisField['cep'].errors}">
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && dadosPessoaisField['cep'].hasError('required')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group mb-4">
+                                                <textarea class="form-control" placeholder="Endereço" name="endereco"
+                                                    formControlName="endereco"
+                                                    [ngClass]="{'is-invalid': submitted && dadosPessoaisField['endereco'].errors}"></textarea>
+                                                <div class="invalid-feedback">
+                                                    <app-form-error-feedback [errorMessage]="'O campo é obrigatório.'"
+                                                        [showError]="submitted && dadosPessoaisField['endereco'].hasError('required')" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne">
+                        <div style="color: white;">Dados de Contratação</div>
+                    </button>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <div class="card-body mt-4">
+
+                                <div class="row mb-4">
+                                    <div class="container-fluid col-md-5">
+                                        <div formGroupName="dadosContratacao">
+
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <select class="form-select" name="operadoraId"
+                                                        formControlName="operadoraId" (change)="getPlanosByOperadora()"
+                                                        (change)="getAdministradorasByOperadora()"
+                                                        [ngClass]="{'is-invalid': submitted && dadosContratacaoField['operadoraId'].errors}">
+                                                        <option selected value="">- Operadora -</option>
+                                                        <option *ngFor="let item of operadoras" [value]="item.id">
+                                                            {{item.nome}}</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && dadosContratacaoField['operadoraId'].hasError('required')" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <select class="form-select" name="administradoraId"
+                                                        formControlName="administradoraId">
+                                                        <option selected value="">- Administradora -</option>
+                                                        <option *ngFor="let item of administradoras" [value]="item.id">
+                                                            {{item.nome}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <select class="form-select" name="segmentacao"
+                                                        formControlName="segmentacao"
+                                                        [ngClass]="{'is-invalid': submitted && dadosContratacaoField['segmentacao'].errors}">
+                                                        <option selected value="">- Segmentação -</option>
+                                                        <option value="INDIVIDUAL">Individual</option>
+                                                        <option value="ADESAO">Adesão</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && dadosContratacaoField['segmentacao'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <div class="input-group mt-2">
+                                                        <select class="form-select" name="corretorId"
+                                                            formControlName="corretorId"
+                                                            [ngClass]="{'is-invalid': submitted && dadosContratacaoField['corretorId'].errors}">
+                                                            <option selected value="">- Contratante -</option>
+                                                            <option *ngFor="let item of corretores" [value]="item.id">
+                                                                {{item.nome}}</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            <app-form-error-feedback
+                                                                [errorMessage]="'O campo é obrigatório.'"
+                                                                [showError]="submitted && dadosContratacaoField['corretorId'].hasError('required')" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label>Data de Vigência</label>
+                                                    <div class="input-group mt-2">
+                                                        <input type="date" class="form-control" name="vigencia"
+                                                            formControlName="vigencia"
+                                                            [ngClass]="{'is-invalid': submitted && dadosContratacaoField['vigencia'].errors}">
+                                                        <div class="invalid-feedback">
+                                                            <app-form-error-feedback
+                                                                [errorMessage]="'O campo é obrigatório.'"
+                                                                [showError]="submitted && dadosContratacaoField['vigencia'].hasError('required')" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="container-fluid col-md-5" formGroupName="dadosContratacao">
+                                        <div class="col-md-12">
+                                            <div class="input-group mb-4">
+                                                <textarea class="form-control" placeholder="Observações"
+                                                    rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-8">
+                                                <div class="input-group mt-2">
+                                                    <select class="form-select" name="planoId" formControlName="planoId"
+                                                        [ngClass]="{'is-invalid': submitted && dadosContratacaoField['planoId'].errors}">
+                                                        <option selected value="">- Plano Escolhido -</option>
+                                                        <option *ngFor="let item of planos" [value]="item.id">
+                                                            {{item.nome}}
+                                                        </option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && dadosContratacaoField['planoId'].hasError('required')" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="input-group mt-2"
+                                                    [ngClass]="{'is-invalid': submitted && dadosContratacaoField['percentualComissao'].errors}">
+                                                    <input type="text" class="form-control" name="percentualComissao"
+                                                        formControlName="percentualComissao"
+                                                        placeholder="% da Comissão">
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && dadosContratacaoField['percentualComissao'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Preço do plano"
+                                                        name="valorDoPlanoBruto" formControlName="valorDoPlanoBruto"
+                                                        [ngClass]="{'is-invalid': submitted && dadosContratacaoField['valorDoPlanoBruto'].errors}">
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && dadosContratacaoField['valorDoPlanoBruto'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Adesão"
+                                                        name="adesao" formControlName="adesao"
+                                                        [ngClass]="{'is-invalid': submitted && dadosContratacaoField['adesao'].errors}">
+                                                    <div class="invalid-feedback">
+                                                        <app-form-error-feedback
+                                                            [errorMessage]="'O campo é obrigatório.'"
+                                                            [showError]="submitted && dadosContratacaoField['adesao'].hasError('required')" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item" id="accordionSemIcone">
+                    <button class="accordion-button" type="button">
+                        <div style="color: white;">Anexos</div>
+                    </button>
+                    <div id="accordion-collapse2" class="accordion-collapse collapse show">
+                        <div class="row mt-3">
+                            <div class="col-md-12 d-flex justify-content-center mt-4">
+                                <label for="attachment" class="btn btn-primary">
+                                    <i class="material-icons align-middle">attachment</i> <span
+                                        class="align-middle">Anexar</span>
+                                </label>
+                                <input id="attachment" type="file" style="display: none;" name="attachment" multiple
+                                    accept=".pdf, image/*" (change)="onAnexosSelecionados($event)">
+                            </div>
+                        </div>
+                        <div class="row mb-3 mt-3">
+                            <div class="d-flex justify-content-center" *ngFor="let anexo of anexosSelecionados">
+                                <span>{{ anexo.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="card-footer d-flex justify-content-end">
+                <div>
+                    <button type="submit" class="btn btn-success" style="display: flex; align-items: center;">
+                        <i class="material-icons" style="margin-right: 5px;">check</i><span
+                            style="margin-right: 5px;">Cadastrar</span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
